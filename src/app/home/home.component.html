@@ -1,0 +1,52 @@
+<div class="d-flex flex-wrap">
+  <div class="card m-5 p-3">
+    <input
+      class="form-control mb-3"
+      type="text"
+      name="name"
+      placeholder="Enter name"
+      [(ngModel)]="facultyModel.name"
+    />
+    <input
+      class="form-control mb-3"
+      type="text"
+      name="url"
+      placeholder="Enter name"
+      [(ngModel)]="facultyModel.url"
+    />
+    <input
+      class="form-control mb-3"
+      type="text"
+      name="description"
+      placeholder="Enter name"
+      [(ngModel)]="facultyModel.description"
+    />
+    <button
+      class="btn btn-primary"
+      *ngIf="idToUpdate < 0"
+      (click)="insertFaculty(facultyModel)"
+    >
+      Insert
+    </button>
+    <button
+      class="btn btn-primary"
+      *ngIf="idToUpdate > 0"
+      (click)="updateFaculty(facultyModel.id)"
+    >
+      Update
+    </button>
+  </div>
+  <div class="card m-5" style="width: 18rem" *ngFor="let faculty of faculties">
+    <img src="{{ faculty.url }}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{ faculty.name }}</h5>
+      <p class="card-text">
+        {{ faculty.description }}
+      </p>
+      <button class="btn btn-danger" (click)="deleteFaculty(faculty.id)">delete</button>
+      <button class="btn btn-info mx-3" (click)="selectFaculty(faculty.id)">
+        update
+      </button>
+    </div>
+  </div>
+</div>
